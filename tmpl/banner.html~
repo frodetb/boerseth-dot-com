@@ -1,0 +1,14 @@
+<div class="spacer">
+  <a class="bannerlink" href="/">
+    <div class="banner">
+      <hr class="fat"><hr class="thin">
+      <div class="spacer">
+        <span class="boerseth">BŒRSETH</span>
+      </div>
+      <hr class="thin"><hr class="fat">
+    </div>
+  </a>
+  <nav>
+    Posts &mdash; About &mdash; Contact
+  </nav>
+</div>
