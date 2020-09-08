@@ -18,6 +18,7 @@ nav {
 }
 h1, h2, h3 { font-weight: normal; }
 h1 { font-size: 1.5em; }
+video { margin-left: auto; margin-right: auto; display: block; }
 sup.latex { vertical-align: text-top; font-size: 0.7em; }
 sub.latex { vertical-align: text-bottom; font-size: 0.7em; }
 div.banner {
