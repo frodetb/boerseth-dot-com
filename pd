@@ -46,22 +46,20 @@ build_default_md_files ()
 make_html_version ()
 {
     cp -r mark site
-    cp tmpl/style.css site/
-    for md_file in `find site -type f -name "*.md*"`; do
-        rm $md_file
-    done
-    for md_file in `find mark -type f -name "*.md"`; do
-        html_file=./site/`echo $md_file | sed "s|mark/\(.*\).md|\1|"`.html
+    cp tmpl/{style.css,favicon.png} site/
+    for md_file in `find site -type f -name "*.md"`; do
         pandoc \
             -s \
             --katex \
             -T BŒRSETH \
             -c /style.css \
+            -H tmpl/head.html \
             -B tmpl/banner.html \
             -A tmpl/footer.html \
             -i $md_file \
-            -o $html_file
+            -o ${md_file%.md}.html
     done
+    find site -type f -name "*.md*" -delete
 }
 
 
@@ -70,6 +68,7 @@ make_test_version ()
     cp -r site test
     for html_file in `find test -type f -name "*.html"`; do
         sed -i "" "s|href=\"/|href=\"${PWD}/test/|g" $html_file
+        sed -i "" "s|src=\"/|src=\"${PWD}/test/|g" $html_file
         sed -i "" "s|href=\"/\(.*\)/\"|href=\"/\1/index.html\"|" $html_file
     done
 }
@@ -101,6 +100,7 @@ build ()
 
 push ()
 {
+    build 1
     # check for drafts, invoke error if present
     # push
     echo "Not yet supported..."
